@@ -1,0 +1,33 @@
+.container{
+  margin: 30px 200px;
+}
+.large{
+  font-size: 20px;
+  padding : 5px;
+}
+.row{
+  margin: 20px 0px;;
+}
+.btn-blue{
+  background-color: MidnightBlue;
+  color: white;
+  box-shadow: 1px 1px 5px #ccc;
+}
+.alert {
+    background: #f2edda;
+    padding: 7px;
+    font-size: .9em;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: 2s alertAnim forwards;
+}
+@keyframes alertAnim {
+    from {
+        opacity:0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity:1;
+        transform: translateY(0);
+    }
+}

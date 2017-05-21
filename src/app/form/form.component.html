@@ -1,0 +1,53 @@
+<div class="container">
+  <md-card class="example-card">
+    <md-card-header>
+      <md-card-title class="large">Login Page</md-card-title>
+    </md-card-header>
+    <md-card-content>
+      <div fxLayout="column" fxLayoutAlign="space-around center" >
+        <div class="container">
+          <div class="row">
+            <md-radio-group [(ngModel)]="response">
+              <md-radio-button value="1" class="large" [align]="end">Already a user?</md-radio-button>
+              <md-radio-button value="0" class="large" [align]="end">Else Sign Up</md-radio-button>
+            </md-radio-group>
+          </div>
+          <form [formGroup]="registerForm" *ngIf="response == 0" (ngSubmit)="submit(registerForm.value)">
+            <label class="large">SignUp</label>
+            <div class="alert" *ngIf="submitted && (!registerForm.controls['pusername'].valid || !registerForm.controls['email'].valid || !registerForm.controls['newpass'].valid)">Please Fill out all the fields</div>
+            <div fxLayout="row" class="row">
+              <md-input-container>
+                <input mdInput placeholder="Preferred username" class="large" formControlName="pusername">
+              </md-input-container>
+            </div>
+            <div fxLayout="row" class="row">
+              <md-input-container>
+                <input mdInput placeholder="Email" class="large" formControlName="email">
+              </md-input-container>
+            </div>
+            <div class="row" fxLayout="row">
+              <md-input-container>
+                <input mdInput placeholder="password" class="large" formControlName="newpass">
+              </md-input-container>
+            </div>
+            <button type="submit" md-button class="btn-blue">Submit</button>
+          </form>
+          <form [formGroup]="loginForm" *ngIf="response == 1" (ngSubmit) = "login(loginForm.value)">
+            <div class="alert" *ngIf="submitted && (!loginForm.controls['username'].valid || !loginForm.controls['password'].valid)">Please Fill out all the fields</div>
+            <div fxLayout="row" class="row">
+              <md-input-container>
+                <input mdInput placeholder="Username" class="large" formControlName="username">
+              </md-input-container>
+            </div>
+            <div fxLayout="row" class="row">
+              <md-input-container>
+                <input type="password" mdInput placeholder="Password" class="large" formControlName="password">
+              </md-input-container>
+            </div>
+            <button type="submit" md-button class="btn-blue">Login</button>
+          </form>
+        </div>
+      </div>
+    </md-card-content>
+  </md-card>
+</div>
