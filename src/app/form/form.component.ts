@@ -34,13 +34,11 @@ export class FormComponent implements OnInit {
   submit(data){
     this.submitted=true;
     this.lservice.store(data);
+    alert("Welcome you can now log in");
   }
   login(data){
     this.submitted=true;
     this.lservice.getdata(data);
-  }
-  welcome(data){
-
   }
 
 }
