@@ -181,12 +181,11 @@ var FormComponent = (function () {
     FormComponent.prototype.submit = function (data) {
         this.submitted = true;
         this.lservice.store(data);
+        alert("Welcome you can now log in");
     };
     FormComponent.prototype.login = function (data) {
         this.submitted = true;
         this.lservice.getdata(data);
-    };
-    FormComponent.prototype.welcome = function (data) {
     };
     FormComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* Component */])({
