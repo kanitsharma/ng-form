@@ -5,47 +5,65 @@
     </md-card-header>
     <md-card-content>
       <div fxLayout="column" fxLayoutAlign="space-around center" >
-        <div class="container">
-          <div class="row">
-            <md-radio-group [(ngModel)]="response">
-              <md-radio-button value="1" class="large" [align]="end">Already a user?</md-radio-button>
-              <md-radio-button value="0" class="large" [align]="end">Else Sign Up</md-radio-button>
-            </md-radio-group>
-          </div>
-          <form [formGroup]="registerForm" *ngIf="response == 0" (ngSubmit)="submit(registerForm.value)">
-            <label class="large">SignUp</label>
-            <div class="alert" *ngIf="submitted && (!registerForm.controls['pusername'].valid || !registerForm.controls['email'].valid || !registerForm.controls['newpass'].valid)">Please Fill out all the fields</div>
-            <div fxLayout="row" class="row">
-              <md-input-container>
-                <input mdInput placeholder="Preferred username" class="large" formControlName="pusername">
-              </md-input-container>
-            </div>
-            <div fxLayout="row" class="row">
-              <md-input-container>
-                <input mdInput placeholder="Email" class="large" formControlName="email">
-              </md-input-container>
-            </div>
-            <div class="row" fxLayout="row">
-              <md-input-container>
-                <input mdInput placeholder="password" class="large" formControlName="newpass">
-              </md-input-container>
-            </div>
-            <button type="submit" md-button class="btn-blue">Submit</button>
-          </form>
-          <form [formGroup]="loginForm" *ngIf="response == 1" (ngSubmit) = "login(loginForm.value)">
-            <div class="alert" *ngIf="submitted && (!loginForm.controls['username'].valid || !loginForm.controls['password'].valid)">Please Fill out all the fields</div>
-            <div fxLayout="row" class="row">
-              <md-input-container>
-                <input mdInput placeholder="Username" class="large" formControlName="username">
-              </md-input-container>
-            </div>
-            <div fxLayout="row" class="row">
-              <md-input-container>
-                <input type="password" mdInput placeholder="Password" class="large" formControlName="password">
-              </md-input-container>
-            </div>
-            <button type="submit" md-button class="btn-blue">Login</button>
-          </form>
+        <div fxFill class="container" >
+          <md-tab-group [(selectedIndex)] = "gg">
+            <md-tab label="Sign Up">
+              <form [formGroup]="registerForm" (ngSubmit)="submit(registerForm.value)" >
+                <div class="alert" *ngIf="submitted && (!registerForm.controls['pusername'].valid || !registerForm.controls['email'].valid || !registerForm.controls['newpass'].valid)">Please Fill out all the fields</div>
+                <div fxLayout="row" class="row">
+                  <md-input-container>
+                    <input mdInput placeholder="Preferred username" class="large" formControlName="pusername">
+                  </md-input-container>
+                </div>
+                <div fxLayout="row" class="row">
+                  <md-input-container>
+                    <input mdInput placeholder="Email" class="large" formControlName="email">
+                  </md-input-container>
+                </div>
+                <div fxLayout="row" class="row" fxLayoutAlign="start center">
+                  <label>Date Of Birth &nbsp;&nbsp;</label>
+                  <material-datepicker [(date)]="yourModelDate"></material-datepicker>
+                </div>
+                <div class="row" fxLayout="row">
+                  <md-input-container>
+                    <input mdInput placeholder="password" class="large" formControlName="newpass">
+                  </md-input-container>
+                </div>
+                <div fxLayout="row" class="row">
+                  <md-slide-toggle formControlName="human">Are You a Human?</md-slide-toggle>
+                </div>
+                <button type="submit" md-button class="btn-blue">Submit</button>
+                <button type="button" (click) = "skip()" md-button class="btn-blue">Skip to login</button>
+              </form>
+            </md-tab>
+            <md-tab label="Login" [disabled] = "true">
+              <form [formGroup]="loginForm" (ngSubmit) = "login(loginForm.value)">
+                <div class="alert" *ngIf="submitted && (!loginForm.controls['username'].valid || !loginForm.controls['password'].valid)">Please Fill out all the fields</div>
+                <div fxLayout="row" class="row">
+                  <md-input-container>
+                    <input mdInput placeholder="Username" class="large" formControlName="username">
+                  </md-input-container>
+                </div>
+                <div fxLayout="row" class="row">
+                  <md-input-container>
+                    <input type="password" mdInput placeholder="Password" class="large" formControlName="password">
+                  </md-input-container>
+                </div>
+                <div fxLayout="row" class="row">
+                  <md-checkbox [align]="end" formControlName="checkbox">
+                    Remember me
+                  </md-checkbox>
+                </div>
+                <button type="submit" md-button class="btn-blue">Login</button>
+              </form>
+            </md-tab>
+            <md-tab label = "Welcome"  [disabled] = "true">
+              <div class="large">
+                Welcome&nbsp;{{pwelcome}}
+                <button type="button" (click) = "previous()" md-button class="btn-blue">Previous</button>
+              </div>
+            </md-tab>
+          </md-tab-group>
         </div>
       </div>
     </md-card-content>

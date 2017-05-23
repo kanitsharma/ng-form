@@ -11,6 +11,8 @@ import { DatepickerModule } from 'angular2-material-datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MdCheckboxModule} from '@angular/material';
 import {MdRadioModule} from '@angular/material';
+import {MdSlideToggleModule} from '@angular/material';
+import {MdTabsModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
@@ -33,7 +35,9 @@ import { FormComponent } from './form/form.component';
     ReactiveFormsModule,
     MdCheckboxModule,
     MdRadioModule,
-    
+    MdSlideToggleModule,
+    MdTabsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
